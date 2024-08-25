@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "vacancy_job")
@@ -47,4 +48,5 @@ public class VacancyJob {
 
     @Column(name = "job_benefits")
     private String jobBenefits;
+
 }

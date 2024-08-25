@@ -10,45 +10,28 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/jobs")
-
 public class VacancyJobController {
 
     @Autowired
     private VacancyJobService vacancyJobService;
 
     @PostMapping("/create")
-    public VacancyJob create(@RequestParam("jobTitle") String jobTitle,
-                             @RequestParam("requiredDegrees") String requiredDegrees,
-                             @RequestParam("requiredSkills") String requiredSkills,
-                             @RequestParam("requiredExperience") String requiredExperience,
-                             @RequestParam("jobBenefits") String jobBenefits,
-                             @RequestParam("departments") String departments) {
-        return vacancyJobService.createVacancyJob(jobTitle, requiredDegrees, requiredSkills, requiredExperience, jobBenefits, departments);
+    public ResponseEntity<VacancyJob> create(@RequestBody VacancyJob vacancyJob) {
+        VacancyJob createdJob = vacancyJobService.createVacancyJob(vacancyJob);
+        return ResponseEntity.ok(createdJob);
     }
 
-
     @GetMapping("/list")
-    public List<VacancyJob> list() {
-        return vacancyJobService.getAllVacancyJobs();
+    public ResponseEntity<List<VacancyJob>> list() {
+        List<VacancyJob> jobs = vacancyJobService.getAllVacancyJobs();
+        return ResponseEntity.ok(jobs);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<VacancyJob> update(@PathVariable Long id, @RequestBody VacancyJob vacancyJobDetails) {
-
-        String jobTitle = vacancyJobDetails.getJobTitle();
-        String requiredDegrees = vacancyJobDetails.getRequiredDegrees();
-        String requiredSkills = vacancyJobDetails.getRequiredSkills();
-        String requiredExperience = vacancyJobDetails.getRequiredExperience();
-        String jobBenefits = vacancyJobDetails.getJobBenefits();
-        String departments = vacancyJobDetails.getDepartments();
-
-        VacancyJob updatedVacancyJob = vacancyJobService.updateVacancyJob(id, jobTitle, requiredDegrees, requiredSkills, requiredExperience, jobBenefits, departments);
-
+        VacancyJob updatedVacancyJob = vacancyJobService.updateVacancyJob(id, vacancyJobDetails);
         return ResponseEntity.ok(updatedVacancyJob);
     }
-
-
-
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
