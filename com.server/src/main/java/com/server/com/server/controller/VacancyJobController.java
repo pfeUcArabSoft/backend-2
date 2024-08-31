@@ -21,10 +21,11 @@ public class VacancyJobController {
         return ResponseEntity.ok(createdJob);
     }
 
-    @GetMapping("/list")
-    public ResponseEntity<List<VacancyJob>> list() {
+    @GetMapping({"/list"})
+    public List<VacancyJob> list() {
         List<VacancyJob> jobs = vacancyJobService.getAllVacancyJobs();
-        return ResponseEntity.ok(jobs);
+        System.out.println("hello");
+        return jobs;
     }
 
     @PutMapping("/update/{id}")
