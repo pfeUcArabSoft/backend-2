@@ -8,13 +8,32 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "colleague_id")
-    private User user;
-
     private int score;
 
     private String comment;
 
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "userName")  // Ensure the column names are correct
+    private User user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 }

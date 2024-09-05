@@ -45,7 +45,21 @@ public class User {
             joinColumns = @JoinColumn(name = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "EXPERIENCE_ID")
     )
+
+
     private Set<Experience> experience;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Rating> ratings;
+
+    // Getters and setters for ratings
+    public Set<Rating> getRatings() {
+        return ratings;
+    }
+
+    public void setRatings(Set<Rating> ratings) {
+        this.ratings = ratings;
+    }
 
     public String getUserName() {
         return userName;
