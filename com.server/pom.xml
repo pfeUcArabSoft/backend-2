@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.server</groupId>
-	<artifactId>com.server</artifactId>
+	<artifactId>cserver</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>com.server</name>
+	<name>server</name>
 	<description>Sillmatch Server side </description>
 	<properties>
 		<java.version>1.8</java.version>
