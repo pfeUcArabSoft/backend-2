@@ -2,6 +2,7 @@ package com.server.com.server.controller;
 
 import com.server.com.server.dao.RatingDao;
 import com.server.com.server.entity.Rating;
+import com.server.com.server.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ public class RatingController {
 
     @Autowired
     private RatingDao ratingDao;
+    @Autowired
+    private UserService userService;
 
     @PostMapping
     public ResponseEntity<Rating> createRating(@RequestBody Rating rating) {

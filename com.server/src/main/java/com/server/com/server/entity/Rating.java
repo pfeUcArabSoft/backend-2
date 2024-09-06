@@ -14,7 +14,7 @@ public class Rating {
 
 
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "userName")  // Ensure the column names are correct
+    @JoinColumn(name = "user_id") // Join based on user id (assuming user id is the primary key in User entity)
     private User user;
 
     public Long getId() {
@@ -36,4 +36,9 @@ public class Rating {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

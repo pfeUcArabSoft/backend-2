@@ -52,7 +52,6 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Rating> ratings;
 
-    // Getters and setters for ratings
     public Set<Rating> getRatings() {
         return ratings;
     }
